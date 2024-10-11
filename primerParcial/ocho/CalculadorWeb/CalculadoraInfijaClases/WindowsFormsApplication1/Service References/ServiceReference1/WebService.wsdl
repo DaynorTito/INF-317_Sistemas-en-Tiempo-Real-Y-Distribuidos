@@ -1,0 +1,450 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="HelloWorld">
+        <s:complexType />
+      </s:element>
+      <s:element name="HelloWorldResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="HelloWorldResult" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="suma">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="sumaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="sumaResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="resta">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="restaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="restaResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="multi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="multiResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="multiResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="divi">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="diviResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="diviResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarOperacion">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="a" type="s:double" />
+            <s:element minOccurs="1" maxOccurs="1" name="b" type="s:double" />
+            <s:element minOccurs="0" maxOccurs="1" name="operador" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RealizarOperacionResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RealizarOperacionResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Precedencia">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="operador" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="PrecedenciaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="PrecedenciaResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EsOperador">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="token" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EsOperadorResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EsOperadorResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="EvaluarPostfijo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postfijo" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfString">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="string" nillable="true" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="EvaluarPostfijoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="EvaluarPostfijoResult" type="s:double" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertirAPostfijo">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="expresion" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="ConvertirAPostfijoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="ConvertirAPostfijoResult" type="tns:ArrayOfString" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="HelloWorldSoapIn">
+    <wsdl:part name="parameters" element="tns:HelloWorld" />
+  </wsdl:message>
+  <wsdl:message name="HelloWorldSoapOut">
+    <wsdl:part name="parameters" element="tns:HelloWorldResponse" />
+  </wsdl:message>
+  <wsdl:message name="sumaSoapIn">
+    <wsdl:part name="parameters" element="tns:suma" />
+  </wsdl:message>
+  <wsdl:message name="sumaSoapOut">
+    <wsdl:part name="parameters" element="tns:sumaResponse" />
+  </wsdl:message>
+  <wsdl:message name="restaSoapIn">
+    <wsdl:part name="parameters" element="tns:resta" />
+  </wsdl:message>
+  <wsdl:message name="restaSoapOut">
+    <wsdl:part name="parameters" element="tns:restaResponse" />
+  </wsdl:message>
+  <wsdl:message name="multiSoapIn">
+    <wsdl:part name="parameters" element="tns:multi" />
+  </wsdl:message>
+  <wsdl:message name="multiSoapOut">
+    <wsdl:part name="parameters" element="tns:multiResponse" />
+  </wsdl:message>
+  <wsdl:message name="diviSoapIn">
+    <wsdl:part name="parameters" element="tns:divi" />
+  </wsdl:message>
+  <wsdl:message name="diviSoapOut">
+    <wsdl:part name="parameters" element="tns:diviResponse" />
+  </wsdl:message>
+  <wsdl:message name="RealizarOperacionSoapIn">
+    <wsdl:part name="parameters" element="tns:RealizarOperacion" />
+  </wsdl:message>
+  <wsdl:message name="RealizarOperacionSoapOut">
+    <wsdl:part name="parameters" element="tns:RealizarOperacionResponse" />
+  </wsdl:message>
+  <wsdl:message name="PrecedenciaSoapIn">
+    <wsdl:part name="parameters" element="tns:Precedencia" />
+  </wsdl:message>
+  <wsdl:message name="PrecedenciaSoapOut">
+    <wsdl:part name="parameters" element="tns:PrecedenciaResponse" />
+  </wsdl:message>
+  <wsdl:message name="EsOperadorSoapIn">
+    <wsdl:part name="parameters" element="tns:EsOperador" />
+  </wsdl:message>
+  <wsdl:message name="EsOperadorSoapOut">
+    <wsdl:part name="parameters" element="tns:EsOperadorResponse" />
+  </wsdl:message>
+  <wsdl:message name="EvaluarPostfijoSoapIn">
+    <wsdl:part name="parameters" element="tns:EvaluarPostfijo" />
+  </wsdl:message>
+  <wsdl:message name="EvaluarPostfijoSoapOut">
+    <wsdl:part name="parameters" element="tns:EvaluarPostfijoResponse" />
+  </wsdl:message>
+  <wsdl:message name="ConvertirAPostfijoSoapIn">
+    <wsdl:part name="parameters" element="tns:ConvertirAPostfijo" />
+  </wsdl:message>
+  <wsdl:message name="ConvertirAPostfijoSoapOut">
+    <wsdl:part name="parameters" element="tns:ConvertirAPostfijoResponse" />
+  </wsdl:message>
+  <wsdl:portType name="WebServiceSoap">
+    <wsdl:operation name="HelloWorld">
+      <wsdl:input message="tns:HelloWorldSoapIn" />
+      <wsdl:output message="tns:HelloWorldSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="suma">
+      <wsdl:input message="tns:sumaSoapIn" />
+      <wsdl:output message="tns:sumaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="resta">
+      <wsdl:input message="tns:restaSoapIn" />
+      <wsdl:output message="tns:restaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="multi">
+      <wsdl:input message="tns:multiSoapIn" />
+      <wsdl:output message="tns:multiSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="divi">
+      <wsdl:input message="tns:diviSoapIn" />
+      <wsdl:output message="tns:diviSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="RealizarOperacion">
+      <wsdl:input message="tns:RealizarOperacionSoapIn" />
+      <wsdl:output message="tns:RealizarOperacionSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Precedencia">
+      <wsdl:input message="tns:PrecedenciaSoapIn" />
+      <wsdl:output message="tns:PrecedenciaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EsOperador">
+      <wsdl:input message="tns:EsOperadorSoapIn" />
+      <wsdl:output message="tns:EsOperadorSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="EvaluarPostfijo">
+      <wsdl:input message="tns:EvaluarPostfijoSoapIn" />
+      <wsdl:output message="tns:EvaluarPostfijoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="ConvertirAPostfijo">
+      <wsdl:input message="tns:ConvertirAPostfijoSoapIn" />
+      <wsdl:output message="tns:ConvertirAPostfijoSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="WebServiceSoap" type="tns:WebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="suma">
+      <soap:operation soapAction="http://tempuri.org/suma" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resta">
+      <soap:operation soapAction="http://tempuri.org/resta" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multi">
+      <soap:operation soapAction="http://tempuri.org/multi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="divi">
+      <soap:operation soapAction="http://tempuri.org/divi" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarOperacion">
+      <soap:operation soapAction="http://tempuri.org/RealizarOperacion" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Precedencia">
+      <soap:operation soapAction="http://tempuri.org/Precedencia" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsOperador">
+      <soap:operation soapAction="http://tempuri.org/EsOperador" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EvaluarPostfijo">
+      <soap:operation soapAction="http://tempuri.org/EvaluarPostfijo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertirAPostfijo">
+      <soap:operation soapAction="http://tempuri.org/ConvertirAPostfijo" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="WebServiceSoap12" type="tns:WebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="HelloWorld">
+      <soap12:operation soapAction="http://tempuri.org/HelloWorld" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="suma">
+      <soap12:operation soapAction="http://tempuri.org/suma" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="resta">
+      <soap12:operation soapAction="http://tempuri.org/resta" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="multi">
+      <soap12:operation soapAction="http://tempuri.org/multi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="divi">
+      <soap12:operation soapAction="http://tempuri.org/divi" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="RealizarOperacion">
+      <soap12:operation soapAction="http://tempuri.org/RealizarOperacion" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Precedencia">
+      <soap12:operation soapAction="http://tempuri.org/Precedencia" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EsOperador">
+      <soap12:operation soapAction="http://tempuri.org/EsOperador" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="EvaluarPostfijo">
+      <soap12:operation soapAction="http://tempuri.org/EvaluarPostfijo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="ConvertirAPostfijo">
+      <soap12:operation soapAction="http://tempuri.org/ConvertirAPostfijo" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="WebService">
+    <wsdl:port name="WebServiceSoap" binding="tns:WebServiceSoap">
+      <soap:address location="http://localhost:50731/WebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="WebServiceSoap12" binding="tns:WebServiceSoap12">
+      <soap12:address location="http://localhost:50731/WebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
