@@ -28,7 +28,6 @@ int main(int argc, char **argv) {
     }
 
     if (id_proceso == 0) {
-        printf("Ingrese la longitud de las matrices: ");
         scanf("%d", &tam);
     }
 
